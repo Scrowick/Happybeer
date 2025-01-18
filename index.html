@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=no">
+    <title>Happybeer</title>
+    <link rel="stylesheet" href="styles/styles.css">
+	<script src="javascript/main.js"></script>
+
+</head>
+<header>
+    <!-- Barra de navegación de escritorio -->
+    <nav class="navbar-desktop">
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/logo.png" alt="Logo">
+            </a>
+                    </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li class="dropdown-menu">
+                <a class="menu-link" href="#">Cervezas</a>
+                <div class="submenu-items">
+                    <a href="cervezas-claras.html">Cervezas claras</a>
+                    <a href="cervezas-oscuras.html">Cervezas oscuras</a>
+                </div>
+            </li>
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Botón hamburguesa dentro del body, alineado a la derecha -->
+    <button class="hamburger" onclick="toggleSidebar()">☰</button>
+    
+    <!-- Menú lateral -->
+    <div class="sidebar" id="sidebar">
+        <ul>
+            <li class="inicio"><a href="index.html">Inicio</a></li>
+            <li class="productos dropdown">
+                <a href="javascript:void(0)" onclick="toggleDropdown('sidebar-dropdown', this)" aria-expanded="false">
+                    Cervezas 
+                    <span class="arrow">&#9660;</span>
+                </a>
+                <ul class="submenu" id="sidebar-dropdown">
+                    <li><a href="cervezas-claras.html">Cervezas claras</a></li>
+                    <li><a href="cervezas-oscuras.html">Cervezas oscuras</a></li>
+                </ul>
+            </li>
+            <li class="nosotros"><a href="#">Nosotros</a></li>
+            <li class="contacto"><a href="#">Contacto</a></li>
+        </ul>
+    </div>
+    
+    <!-- Overlay para el menú hamburguesa -->
+    <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+
+</header>
+
+
+
+<body>
+
+
+    <!-- Banner -->
+    <div class="banner">
+        <img class="banner-image" src="images/banner-1.jpg" alt="Image 1">
+        <img class="banner-image" src="images/banner-2.jpg" alt="Image 2">
+        <img class="banner-image" src="images/banner-3.jpg" alt="Image 3">
+    </div>
+
+    <!-- Infobox -->
+    <div class="info-box">
+        <div class="content">
+            <h2 class="title">HAPPY BEER: DESCUBRE EL SABOR DE LA ALEGRÍA</h2>
+            <p class="description">¡Bienvenido a Happy Beer! Sumérgete en una experiencia cervecera única donde la tradición se une con la innovación. En nuestro espacio acogedor, te invitamos a disfrutar de una amplia selección de cervezas artesanales cuidadosamente elaboradas. Desde los clásicos hasta los sabores más atrevidos, cada sorbo es una celebración de la pasión por la buena cerveza. Te esperamos en nuestro acogedor establecimiento para que disfrutes de una experiencia cervecera inolvidable. ¡Ven y descubre el sabor de la alegría con nosotros! ¡Salud!</p>
+        </div>
+    </div>
+
+    <!-- Galeria -->
+    <div class="gallery-box">
+        <div class="content-gallery">
+            <h2 class="experiencia">Experiencia de clientes</h2>
+        </div>
+
+        <div class="contenedor-imagen">
+            <div class="imagen-experiencia">
+                <img src="images/imagen-experiencia1.jpg" alt="Experiencia 1">
+            </div>
+            <div class="imagen-experiencia">
+                <img src="images/imagen-experiencia2.jpg" alt="Experiencia 2">
+            </div>
+            <div class="imagen-experiencia">
+                <img src="images/imagen-experiencia3.jpg" alt="Experiencia 3">
+            </div>
+            <div class="imagen-experiencia">
+                <img src="images/imagen-experiencia4.jpg" alt="Experiencia 4">
+            </div>
+            <div class="imagen-experiencia">
+                <img src="images/imagen-experiencia5.jpg" alt="Experiencia 5">
+            </div>
+            <div class="imagen-experiencia">
+                <img src="images/imagen-experiencia6.jpg" alt="Experiencia 6">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="contact-info">
+            <div class="contact-group">
+                <div class="contact-item">
+                    <p class="info-title">Célular</p>
+                    <a href="tel:+526861886548" class="contact-link">+52 686-188-6548</a>
+                </div>
+                <div class="contact-item">
+                    <p class="info-title">Correo</p>
+                    <a href="mailto:happybeer@contacto.com" class="contact-link">happybeer@contacto.com</a>
+                </div>
+                <div class="contact-item">
+                    <div class="social-links">
+                        <a href="https://facebook.com" id="facebook" class="social-link"></a>
+                        <a href="https://instagram.com" id="instagram" class="social-link"></a>
+                        <a href="https://twitter.com" id="twitter" class="social-link"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

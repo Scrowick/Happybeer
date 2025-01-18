@@ -1,0 +1,961 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #222;
+    color: #333;
+    overflow-x: hidden;
+}
+
+header {
+    background-color: #000;
+}
+
+/* Barra de navegación de escritorio */
+.navbar-desktop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    padding: 0 20px;
+    height: 120px;
+    position: relative; /* Esto es importante para la hamburguesa */
+}
+
+.navbar .logo img {
+    height: 80px; /* Ajusta el tamaño del logo */
+}
+
+.navbar-desktop ul {
+    display: flex;
+    justify-content: flex-start;
+    flex-grow: 1;
+    list-style: none;
+}
+
+.navbar-desktop ul li {
+    padding: 0 20px;
+}
+
+.navbar-desktop ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+}
+
+.navbar-desktop ul li a:hover {
+    color: #e1b62f;
+}
+
+/* Estilos para la hamburguesa */
+.hamburger {
+    font-size: 30px;
+    background: none;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    display: none; /* Ocultamos la hamburguesa en pantallas grandes */
+}
+
+/* Dropdown menu styling */
+.dropdown-menu {
+    position: relative;
+}
+
+.submenu-items {
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    display: none;
+    background-color: rgb(34, 34, 34);
+    border: 1px solid #292929;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 900;
+    min-width: 155px;
+}
+
+.submenu-items a {
+    display: block;
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none;
+}
+
+.submenu-items a:hover {
+    color: #e1b62f;
+}
+
+.dropdown-menu:hover .submenu-items {
+    display: block;
+}
+
+a.hover, ul a:hover {
+    background-color: #00000025;
+    color: #e1b62f;
+}
+
+a.active {
+    background-color: #0000008f;
+    color: #e1b62f;
+}
+
+.arrow {
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+a.active .arrow {
+    transform: rotate(180deg);
+}
+
+/* Submenu oculto por defecto */
+.submenu {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: rgb(54, 54, 54);
+    width: 100%;
+}
+
+.submenu.active {
+    display: block;
+}
+
+/* Estilos para el modo móvil */
+@media (max-width: 768px) {
+    /* Barra de navegación de escritorio oculta en pantallas móviles */
+    .navbar-desktop ul {
+        display: none; /* Ocultamos el menú de enlaces en modo móvil */
+    }
+
+    /* Mostrar la hamburguesa solo en pantallas móviles */
+    .hamburger {
+        display: block; /* Muestra el botón hamburguesa en pantallas móviles */
+        position: absolute;
+        top: 0px;  /* Asegura que la hamburguesa esté en la parte superior */
+        right: -35px; /* Posición correcta en el lado derecho */
+        font-size: 30px;
+        color: #ffffff;
+        border: none;
+        background: none;
+        cursor: pointer;
+        z-index: 900; /* Asegura que la hamburguesa esté encima de otros elementos */
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+}
+
+/* Barra lateral (Sidebar) */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: rgb(34, 34, 34);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 20px;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto; /* Barra desplazadora vertical */
+    max-height: 100vh; /* Limita la altura al 100% de la ventana */
+}
+
+@media (max-width: 480px) {
+    .sidebar ul li a {
+        font-size: 14px; /* Reducir tamaño del texto en pantallas pequeñas */
+        padding: 15px; /* Ajustar el padding */
+    }
+
+    .sidebar {
+        width: 200px; /* Reducir el ancho del sidebar en pantallas pequeñas */
+    }
+}
+
+.sidebar.active {
+    right: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    width: 100%;
+    text-align: left;
+    margin: 0;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    padding: 20px 20px;
+    border-bottom: 1px solid #3b3b3b;
+}
+
+.sidebar ul li a:hover {
+    background-color: #00000025;
+}
+
+.submenu.active {
+    display: block;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 1000;
+}
+
+/* Estilo botón hamburguesa y overlay */
+button {
+    background-color: #000;
+    color: #efb810;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    height: 70px;
+    width: 120px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 999;
+}
+
+/* no scroll */
+.no-scroll {
+    overflow: hidden;
+}
+
+/* Estilo Banner */
+.banner {
+    position: relative;
+    overflow: hidden;
+    height: 500px;
+    width: 100%;
+    z-index: 1;
+    margin-top: 0px;
+    margin-bottom: 0;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    object-fit: cover;
+}
+
+.banner img.active {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .banner {
+        height: 300px;
+    }
+}
+
+/* Estilo Info-Box/Descripción */
+.info-box {
+    position: relative;
+    width: 100%;
+    background-image: url("../images/bg-1.jpg");
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    height: 0;
+    padding-bottom: 23%;
+    min-height: 441px;
+    padding-top: 20px;
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+    width: 90%;
+}
+
+.title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #efb810;
+}
+
+.description {
+    font-size: 1.25rem;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .info-box {
+        padding-bottom: 35%;
+        min-height: 441px;
+        padding-top: 30px;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .description {
+        font-size: 1rem;
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .info-box {
+        padding-bottom: 45%;
+        min-height: 441px;
+        padding-top: 40px;
+    }
+
+    .title {
+        font-size: 1.25rem;
+    }
+
+    .description {
+        font-size: 0.9rem;
+        max-width: 95%;
+    }
+}
+
+/* Estilo Galería */
+.gallery-box {
+    position: relative;
+    width: 100%;
+    background-color: #000;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    height: auto; /* Permitir que se ajuste dinámicamente */
+    min-height: 441px;
+    padding-top: 25px;
+    padding-bottom: 20px;
+    margin: 0 auto;
+}
+
+.content-gallery {
+    position: absolute;
+    top: 0; /* Coloca el texto al inicio de .gallery-box */
+    left: 50%;
+    transform: translate(-50%, 0); /* Centrado horizontal */
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+    width: 90%;
+    padding-top: 25px; /* Espaciado entre texto y borde superior */
+    padding-bottom: 30px; /* Espaciado entre texto y la primera imagen */
+    box-sizing: border-box;
+    
+}
+
+.experiencia {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #efb810;
+}
+
+/* Estilo Contenedor de Imágenes */
+.contenedor-imagen {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas en escritorio */
+    grid-template-rows: repeat(2, 170px); /* Dos filas en escritorio */
+    gap: 20px;
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    
+}
+
+.imagen-experiencia {
+    height: 100%; /* Rellenar completamente su celda */
+    width: 100%;
+    border: 10px solid #000;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s linear;
+}
+
+.contenedor-imagen .imagen-experiencia img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.2s linear;
+    border-radius: 10px;
+
+}
+
+
+
+/* Modo móvil: Imágenes en una sola columna */
+@media (max-width: 768px) {
+    .contenedor-imagen {
+        grid-template-columns: 1fr; /* Una sola columna */
+        grid-template-rows: auto; /* Ajusta dinámicamente las filas */
+        gap: 20px; /* Espaciado entre las imágenes */
+        max-width: 90%; /* Reducir el ancho en móviles */
+        margin: 20px auto;
+    }
+
+    .imagen-experiencia {
+        height: auto; /* Permitir que la altura sea dinámica */
+        width: 100%;
+    }
+
+    .contenedor-imagen .imagen-experiencia img {
+        height: auto;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+
+
+/* Estilo Footer */
+.footer {
+    background-color: #222;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    width: 100%;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-group {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+    flex: 1;
+    text-align: center;
+    max-width: 600px;
+}
+
+.contact-item {
+    text-align: center;
+}
+
+.info-title {
+    font-weight: bold;
+    color: #efb810;
+    margin-bottom: 5px;
+}
+
+.contact-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.3s;
+}
+
+.contact-link:hover {
+    color: #efb810;
+}
+
+.social-media {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+    max-width: 300px;
+}
+
+.social-links {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.social-link {
+    display: inline-block;
+    height: 35px;
+    width: 35px;
+    background-repeat: no-repeat;
+    background-size: auto;
+    text-indent: -9999px;
+}
+
+#facebook {
+    background-image: url("../images/facebook.svg");
+    background-position: center;
+}
+
+#instagram {
+    background-image: url("../images/instagram.svg");
+    background-position: center;
+}
+
+#twitter {
+    background-image: url("../images/x-twitter.svg");
+    background-position: center;
+}
+
+@media (max-width: 768px) {
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-group {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .social-media {
+        align-items: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
+
+/* Evitar el cuadro azul de los enlaces y botones */
+:focus {
+    outline: none;
+}
+
+/* Evitar el cuadro azul de los enlaces y botones */
+a, .hamburger, .sidebar ul li a, .social-link {
+    outline: none;
+}
+
+.imagen-experiencia:focus {
+    outline: none;
+}
+
+/* Eliminar el cuadro azul en enlaces y elementos interactivos */
+a, button, .hamburger, .sidebar ul li a, .social-link, .imagen-experiencia img {
+    outline: none !important; /* Forzar eliminación del borde */
+    -webkit-tap-highlight-color: transparent; /* Para navegadores móviles */
+}
+
+/* Eliminar cuadro azul o resaltado en enlaces, botones e imágenes */
+a, button, .hamburger, .sidebar ul li a, .social-link, .imagen-experiencia img {
+    outline: none !important; /* Eliminar bordes de enfoque */
+    -webkit-tap-highlight-color: transparent; /* Quitar resaltado en móviles */
+    box-shadow: none !important; /* Evitar sombras en clic o foco */
+}
+
+/* Aplicar lo mismo a los estados activos y enfocados */
+a:focus, button:focus, .hamburger:focus, 
+.sidebar ul li a:focus, .social-link:focus, 
+.imagen-experiencia img:focus,
+a:active, button:active, .hamburger:active, 
+.sidebar ul li a:active, .social-link:active, 
+.imagen-experiencia img:active {
+    outline: none !important; /* Forzar eliminación */
+    box-shadow: none !important; /* Evitar bordes o sombras adicionales */
+    -webkit-tap-highlight-color: transparent;
+    background-color: transparent; /* Quitar cualquier fondo temporal */
+}
+
+/* Adicionalmente, eliminar tap-highlight globalmente */
+* {
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*BANNER CERVEZAS CLARAS */ 
+
+
+
+
+
+
+
+
+
+
+.banner-cervezas-claras {
+    position: relative;
+    overflow: hidden;
+    height: 500px; /* Asegúrate de que la altura se ajuste adecuadamente */
+    width: 100%;
+    z-index: 1;
+    margin-top: 0;
+    box-sizing: border-box;
+}
+
+.banner-cervezas-claras-images {
+    position: relative;
+    height: 100%;
+}
+
+.banner-cervezas-claras-image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0s ease;
+    object-fit: cover;
+}
+
+.banner-cervezas-claras-image.active {
+    opacity: 1;
+}
+
+
+
+
+.banner-cervezas-claras-thumbnails {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    z-index: 2; /* Asegura que las miniaturas estén sobre otros elementos */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.banner-cervezas-claras-thumbnail {
+    width: 100px; /* Ajustar tamaño de las miniaturas */
+    height: auto; /* Permitir que la altura se ajuste automáticamente */
+    max-height: 100%; /* Limitar la altura máxima */
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+    object-fit: contain; /* Mostrar la imagen completa sin recortar */
+    background: none; /* Fondo blanco para las miniaturas */
+}
+
+.banner-cervezas-claras-thumbnail:hover, 
+.banner-cervezas-claras-thumbnail.active {
+    border-color: #000; /* Resaltar miniatura activa o al pasar el cursor */
+}
+
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+    .banner-cervezas-claras {
+        height: 300px; /* Reducir la altura en pantallas pequeñas */
+    }
+
+    .banner-cervezas-claras-thumbnail {
+        width: 60px;
+        height: 40px;
+    }
+}
+
+
+
+/* Estilos de la galería de cervezas claras */
+.cervezas-claras {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 columnas en la fila */
+    gap: 50px; /* Reducir el espacio entre las celdas */
+    padding: 30px; /* Mantener el padding alrededor de la cuadrícula */
+    width: 100%;
+    background-image: url("../images/bg-1.jpg");
+}
+
+/* Estilos para cada imagen de la galería */
+.cervezas-claras-item {
+    width: 100%;
+    height: 100%; /* Reducir la altura de las celdas */
+    overflow: hidden;
+    background-color: #41414131;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cervezas-claras-item img {
+    max-width: 100%; /* Asegura que la imagen ocupe todo el ancho de la celda */
+    max-height: 100%; /* Limitar la altura de la imagen */
+    object-fit: cover; /* Asegura que la imagen mantenga su relación de aspecto */
+}
+
+/* Estilos Responsivos para mantener 6 columnas, pero hacer las imágenes más grandes en móviles */
+@media (max-width: 1200px) {
+    .cervezas-claras {
+        grid-template-columns: repeat(6, 1fr); /* 6 columnas para pantallas medianas */
+    }
+    .cervezas-claras-item img {
+        width: auto; /* El ancho de la imagen se ajusta automáticamente */
+        height: 100%; /* Asegura que la imagen ocupe el máximo alto */
+    }
+}
+
+@media (max-width: 1024px) {
+    .cervezas-claras {
+        grid-template-columns: repeat(3, 1fr); /* 6 columnas para pantallas más pequeñas */
+    }
+    .cervezas-claras-item img {
+        width: auto; /* El ancho de la imagen se ajusta automáticamente */
+        height: 100%; /* Asegura que la imagen ocupe el máximo alto */
+    }
+}
+
+@media (max-width: 768px) {
+    .cervezas-claras {
+        grid-template-columns: repeat(3, 1fr); /* 6 columnas para pantallas más pequeñas */
+    }
+    .cervezas-claras-item img {
+        width: auto; /* El ancho de la imagen se ajusta automáticamente */
+        height: 100%; /* Asegura que la imagen ocupe el máximo alto */
+    }
+}
+
+@media (max-width: 480px) {
+    .cervezas-claras {
+        grid-template-columns: repeat(3, 1fr); /* 6 columnas para móviles */
+    }
+    .cervezas-claras-item img {
+        width: auto; /* El ancho de la imagen se ajusta automáticamente */
+        height: 100%; /* Asegura que la imagen ocupe el máximo alto */
+    }
+}
+
+@media (max-width: 320px) {
+    .cervezas-claras {
+        grid-template-columns: 3fr; /* 1 columna para pantallas muy pequeñas */
+    }
+    .cervezas-claras-item img {
+        width: auto; /* El ancho de la imagen se ajusta automáticamente */
+        height: 100%; /* Asegura que la imagen ocupe el máximo alto */
+    }
+}
+.cervezas-claras-item img {
+    width: auto; /* El ancho de la imagen se ajusta automáticamente */
+    height: 100%; /* La imagen se expande al máximo alto disponible */
+}
+
+
+
+/*BANNER CERVEZAS OSCURAS */ 
+
+.banner-cervezas-oscuras {
+    position: relative;
+    overflow: hidden;
+    height: 500px; /* Asegúrate de que la altura se ajuste adecuadamente */
+    width: 100%;
+    z-index: 1;
+    margin-top: 0;
+    box-sizing: border-box;
+}
+
+.banner-cervezas-oscuras-images {
+    position: relative;
+    height: 100%;
+}
+
+.banner-cervezas-oscuras-image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0s ease;
+    object-fit: cover;
+}
+
+.banner-cervezas-oscuras-image.active {
+    opacity: 1;
+}
+
+.banner-cervezas-oscuras-thumbnails {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    z-index: 2; /* Asegura que las miniaturas estén sobre otros elementos */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.banner-cervezas-oscuras-thumbnail {
+    width: 100px; /* Ajustar tamaño de las miniaturas */
+    height: auto; /* Permitir que la altura se ajuste automáticamente */
+    max-height: 100%; /* Limitar la altura máxima */
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+    object-fit: contain; /* Mostrar la imagen completa sin recortar */
+    background: none; /* Fondo blanco para las miniaturas */
+}
+
+.banner-cervezas-oscuras-thumbnail:hover, 
+.banner-cervezas-oscuras-thumbnail.active {
+    border-color: #000; /* Resaltar miniatura activa o al pasar el cursor */
+}
+
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+    .banner-cervezas-oscuras {
+        height: 300px; /* Reducir la altura en pantallas pequeñas */
+    }
+
+    .banner-cervezas-oscuras-thumbnail {
+        width: 60px;
+        height: 40px;
+    }
+}
+
+/* Estilos de la galería de cervezas oscuras */
+.cervezas-oscuras {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 columnas en la fila */
+    gap: 50px; /* Reducir el espacio entre las celdas */
+    padding: 30px; /* Mantener el padding alrededor de la cuadrícula */
+    width: 100%;
+    background-image: url("../images/bg-1.jpg");
+}
+
+/* Estilos para cada imagen de la galería */
+.cervezas-oscuras-item {
+    width: 100%;
+    height: 100%; /* Reducir la altura de las celdas */
+    overflow: hidden;
+    background-color: #41414131;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cervezas-oscuras-item img {
+    max-width: 100%; /* Asegura que la imagen ocupe todo el ancho de la celda */
+    max-height: 100%; /* Limitar la altura de la imagen */
+    object-fit: cover; /* Asegura que la imagen mantenga su relación de aspecto */
+}
+
+/* Estilos Responsivos para mantener 6 columnas, pero hacer las imágenes más grandes en móviles */
+@media (max-width: 1200px) {
+    .cervezas-oscuras {
+        grid-template-columns: repeat(6, 1fr); /* 6 columnas para pantallas medianas */
+    }
+    .cervezas-oscuras-item img {
+        width: auto; /* El ancho de la imagen se ajusta automáticamente */
+        height: 100%; /* Asegura que la imagen ocupe el máximo alto */
+    }
+}
+
+@media (max-width: 1024px) {
+    .cervezas-oscuras {
+        grid-template-columns: repeat(3, 1fr); /* 6 columnas para pantallas más pequeñas */
+    }
+    .cervezas-oscuras-item img {
+        width: auto; /* El ancho de la imagen se ajusta automáticamente */
+        height: 100%; /* Asegura que la imagen ocupe el máximo alto */
+    }
+}
+
+@media (max-width: 768px) {
+    .cervezas-oscuras {
+        grid-template-columns: repeat(3, 1fr); /* 6 columnas para pantallas más pequeñas */
+    }
+    .cervezas-oscuras-item img {
+        width: auto; /* El ancho de la imagen se ajusta automáticamente */
+        height: 100%; /* Asegura que la imagen ocupe el máximo alto */
+    }
+}
+
+@media (max-width: 480px) {
+    .cervezas-oscuras {
+        grid-template-columns: repeat(3, 1fr); /* 6 columnas para móviles */
+    }
+    .cervezas-oscuras-item img {
+        width: auto; /* El ancho de la imagen se ajusta automáticamente */
+        height: 100%; /* Asegura que la imagen ocupe el máximo alto */
+    }
+}
+
+@media (max-width: 320px) {
+    .cervezas-oscuras {
+        grid-template-columns: 3fr; /* 1 columna para pantallas muy pequeñas */
+    }
+    .cervezas-oscuras-item img {
+        width: auto; /* El ancho de la imagen se ajusta automáticamente */
+        height: 100%; /* Asegura que la imagen ocupe el máximo alto */
+    }
+}
+
+.cervezas-oscuras-item img {
+    width: auto; /* El ancho de la imagen se ajusta automáticamente */
+    height: 100%; /* La imagen se expande al máximo alto disponible */
+}

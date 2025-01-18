@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=no">
+    <title>Cervezas claras</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="javascript/main.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() {
+    // Seleccionar todos los elementos de la galería de cervezas
+    const cervezasItems = document.querySelectorAll('.cervezas-claras-item');
+
+    // Seleccionar todas las imágenes del banner
+    const bannerImages = document.querySelectorAll('.banner-cervezas-claras-image');
+
+    // Añadir evento click a cada item de cerveza
+    cervezasItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Obtener el índice de la cerveza seleccionada desde el atributo data-index
+            const index = item.getAttribute('data-index');
+
+            // Eliminar la clase 'active' de todas las imágenes del banner
+            bannerImages.forEach(img => img.classList.remove('active'));
+
+            // Añadir la clase 'active' a la imagen del banner correspondiente
+            bannerImages[index].classList.add('active');
+        });
+    });
+});
+</script>
+</head>
+
+<body>
+    <header>
+       <!-- Barra de navegación de escritorio -->
+    <nav class="navbar-desktop">
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/logo.png" alt="Logo">
+            </a>
+                    </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li class="dropdown-menu">
+                <a class="menu-link" href="#">Cervezas</a>
+                <div class="submenu-items">
+                    <a href="cervezas-claras.html">Cervezas claras</a>
+                    <a href="cervezas-oscuras.html">Cervezas oscuras</a>
+                </div>
+            </li>
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+        
+        <!-- Botón hamburguesa dentro del body, alineado a la derecha -->
+        <button class="hamburger" onclick="toggleSidebar()">☰</button>
+        
+        <!-- Menú lateral -->
+        <div class="sidebar" id="sidebar">
+            <ul>
+                <li class="inicio"><a href="index.html">Inicio</a></li>
+                <li class="productos dropdown">
+                    <a href="javascript:void(0)" onclick="toggleDropdown('sidebar-dropdown', this)" aria-expanded="false">
+                        Cervezas 
+                        <span class="arrow">&#9660;</span>
+                    </a>
+                    <ul class="submenu" id="sidebar-dropdown">
+                        <li><a href="cervezas-claras.html">Cervezas claras</a></li>
+                        <li><a href="cervezas-oscuras.html">Cervezas oscuras</a></li>
+                    </ul>
+                </li>
+                <li class="nosotros"><a href="#">Nosotros</a></li>
+                <li class="contacto"><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+        
+        <!-- Overlay para el menú hamburguesa -->
+        <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+    </header>
+
+<!-- Banner -->
+<div class="banner-cervezas-claras">
+    <div class="banner-cervezas-claras-images">
+        <img class="banner-cervezas-claras-image active" src="images/banner-cerveza-clara1.jpg" alt="Cerveza Clara 1">
+        <img class="banner-cervezas-claras-image" src="images/banner-cerveza-clara2.jpg" alt="Cerveza Clara 2">
+        <img class="banner-cervezas-claras-image" src="images/banner-cerveza-clara3.jpg" alt="Cerveza Clara 3">
+        <img class="banner-cervezas-claras-image" src="images/banner-cerveza-clara4.jpg" alt="Cerveza Clara 4">
+        <img class="banner-cervezas-claras-image" src="images/banner-cerveza-clara5.jpg" alt="Cerveza Clara 5">
+        <img class="banner-cervezas-claras-image" src="images/banner-cerveza-clara6.jpg" alt="Cerveza Clara 6">
+    </div>
+</div>
+
+<!-- Sección de Imágenes -->
+<section class="cervezas-claras">
+    <div class="cervezas-claras-item" data-index="0"><img src="images/cerveza-clara-1.png" alt="Imagen 1"></div>
+    <div class="cervezas-claras-item" data-index="1"><img src="images/cerveza-clara-2.png" alt="Imagen 2"></div>
+    <div class="cervezas-claras-item" data-index="2"><img src="images/cerveza-clara-3.png" alt="Imagen 3"></div>
+    <div class="cervezas-claras-item" data-index="3"><img src="images/cerveza-clara-4.png" alt="Imagen 4"></div>
+    <div class="cervezas-claras-item" data-index="4"><img src="images/cerveza-clara-5.png" alt="Imagen 5"></div>
+    <div class="cervezas-claras-item" data-index="5"><img src="images/cerveza-clara-6.png" alt="Imagen 6"></div>
+</section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="contact-info">
+            <div class="contact-group">
+                <div class="contact-item">
+                    <p class="info-title">Célular</p>
+                    <a href="tel:+526861886548" class="contact-link">+52 686-188-6548</a>
+                </div>
+                <div class="contact-item">
+                    <p class="info-title">Correo</p>
+                    <a href="mailto:happybeer@contacto.com" class="contact-link">happybeer@contacto.com</a>
+                </div>
+                <div class="contact-item">
+                    <div class="social-links">
+                        <a href="https://facebook.com" id="facebook" class="social-link"></a>
+                        <a href="https://instagram.com" id="instagram" class="social-link"></a>
+                        <a href="https://twitter.com" id="twitter" class="social-link"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
