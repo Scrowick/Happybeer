@@ -751,7 +751,7 @@ a:active, button:active, .hamburger:active,
     width: 100%;
     height: 100%; /* Reducir la altura de las celdas */
     overflow: hidden;
-    background-color: none;
+    background-color: #ffffff0c;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -908,7 +908,7 @@ a:active, button:active, .hamburger:active,
     width: 100%;
     height: 100%; /* Reducir la altura de las celdas */
     overflow: hidden;
-    background-color: none;
+    background-color: #ffffff0c;
     display: flex;
     justify-content: center;
     align-items: center;
