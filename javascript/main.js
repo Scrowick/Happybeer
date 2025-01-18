@@ -1,3 +1,11 @@
+window.addEventListener('load', function () {
+    if(localStorage.getItem('version') !== '1.0.1') {
+        localStorage.setItem('version', '1.0.1');
+        location.reload(true);  // Forzar la recarga sin usar la caché
+    }
+});
+
+
 // CODIGO DE BANNER PRINCIPAL //
 
 document.addEventListener("DOMContentLoaded", function() {
