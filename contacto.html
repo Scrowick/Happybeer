@@ -31,7 +31,6 @@
 });
 </script>
 </head>
-
 <body>
     <header>
        <!-- Barra de navegación de escritorio -->
@@ -81,54 +80,68 @@
         <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
     </header>
 
-<!-- Banner -->
-<div class="banner-cervezas-claras">
-    <div class="banner-cervezas-claras-images">
-        <img class="banner-cervezas-claras-image active" src="images/banner-cerveza-clara1.jpg" alt="Cerveza Clara 1">
-        <img class="banner-cervezas-claras-image" src="images/banner-cerveza-clara2.jpg" alt="Cerveza Clara 2">
-        <img class="banner-cervezas-claras-image" src="images/banner-cerveza-clara3.jpg" alt="Cerveza Clara 3">
-        <img class="banner-cervezas-claras-image" src="images/banner-cerveza-clara4.jpg" alt="Cerveza Clara 4">
-        <img class="banner-cervezas-claras-image" src="images/banner-cerveza-clara5.jpg" alt="Cerveza Clara 5">
-        <img class="banner-cervezas-claras-image" src="images/banner-cerveza-clara6.jpg" alt="Cerveza Clara 6">
+<!-- Banner-contacto-->
+<div class="banner-contacto">
+    <div class="banner-contacto-images">
+        <img class="banner-contacto-image active" src="images/banner-contacto.jpg" alt="Cerveza Clara 1">
+
     </div>
 </div>
+<div class="contacto-contenedor">
+    <div class="tabla">
+        <form action="procesar_formulario.php" method="post">
+            <table>
+                <tr>
+                    <th scope="col">Nombre:</th>
+                    <td><input type="text" name="nombre" id="nombre" size="50" required></td>
+                </tr>
+                <tr>
+                    <th scope="col">E-mail:</th>
+                    <td><input type="email" name="email" id="email" size="50" required></td>
+                </tr>
+                <tr>
+                    <th scope="col">Mensaje:</th>
+                    <td><textarea name="mensaje" id="mensaje" cols="30" rows="5" required></textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" name="enviar" id="enviar" value="Enviar"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
 
-
-<div class="seleccion-cerveza">¡Selecciona tu cerveza de preferencia!</div>
-
-<!-- Sección de Imágenes -->
-<section class="cervezas-claras">
-    <div class="cervezas-claras-item" data-index="0"><img src="images/cerveza-clara-1.png" alt="Imagen 1"></div>
-    <div class="cervezas-claras-item" data-index="1"><img src="images/cerveza-clara-2.png" alt="Imagen 2"></div>
-    <div class="cervezas-claras-item" data-index="2"><img src="images/cerveza-clara-3.png" alt="Imagen 3"></div>
-    <div class="cervezas-claras-item" data-index="3"><img src="images/cerveza-clara-4.png" alt="Imagen 4"></div>
-    <div class="cervezas-claras-item" data-index="4"><img src="images/cerveza-clara-5.png" alt="Imagen 5"></div>
-    <div class="cervezas-claras-item" data-index="5"><img src="images/cerveza-clara-6.png" alt="Imagen 6"></div>
-</section>
-
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="contact-info">
-            <div class="contact-group">
-                <div class="contact-item">
-                    <p class="info-title">Célular</p>
-                    <a href="tel:+526861886548" class="contact-link">+52 686-188-6548</a>
-                </div>
-                <div class="contact-item">
-                    <p class="info-title">Correo</p>
-                    <a href="mailto:happybeer@contacto.com" class="contact-link">happybeer@contacto.com</a>
-                </div>
-                <div class="contact-item">
-                    <div class="social-links">
-                        <a href="https://facebook.com" id="facebook" class="social-link"></a>
-                        <a href="https://instagram.com" id="instagram" class="social-link"></a>
-                        <a href="https://twitter.com" id="twitter" class="social-link"></a>
-                    </div>
-                </div>
-            </div>
+    <div class="informacion-contacto">
+        <div class="info-item">
+            <span class="amarillo">Contacto</span>
+            <span class="blanco"></span>
         </div>
-    </footer>
+        <div class="info-item">
+            <span class="amarillo">Happy Beer:</span>
+            <span class="blanco">C#333 Calle de la Alegría, Mexicali, 12345</span>
+        </div>
+        <div class="info-item">
+            <span class="amarillo">Email:</span>
+            <span class="blanco">happybeer@contacto.com</span>
+        </div>
+        <div class="info-item">
+            <span class="amarillo">Celular:</span>
+            <span class="blanco">686-5254</span>
+        </div>
+        <div class="social-contacto">
+            <a href="https://facebook.com" id="facebook" class="social-link"></a>
+            <a href="https://instagram.com" id="instagram" class="social-link"></a>
+            <a href="https://twitter.com" id="twitter" class="social-link"></a>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<footer class="footer-contact">
+</footer>
+
+
+    
 </body>
 
 </html>
