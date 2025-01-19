@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <link rel="icon" href="images/icon.png" type="image/x-icon">
+    <title>Acerca de nosotros</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="javascript/main.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() {
+    // Seleccionar todos los elementos de la galería de cervezas
+    const cervezasItems = document.querySelectorAll('.cervezas-claras-item');
+
+    // Seleccionar todas las imágenes del banner
+    const bannerImages = document.querySelectorAll('.banner-cervezas-claras-image');
+
+    // Añadir evento click a cada item de cerveza
+    cervezasItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Obtener el índice de la cerveza seleccionada desde el atributo data-index
+            const index = item.getAttribute('data-index');
+
+            // Eliminar la clase 'active' de todas las imágenes del banner
+            bannerImages.forEach(img => img.classList.remove('active'));
+
+            // Añadir la clase 'active' a la imagen del banner correspondiente
+            bannerImages[index].classList.add('active');
+        });
+    });
+});
+</script>
+</head>
+<body>
+    <header>
+       <!-- Barra de navegación de escritorio -->
+    <nav class="navbar-desktop">
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/logo.png" alt="Logo">
+            </a>
+                    </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li class="dropdown-menu">
+                <a class="menu-link" href="#">Cervezas</a>
+                <div class="submenu-items">
+                    <a href="cervezas-claras.html">Cervezas claras</a>
+                    <a href="cervezas-oscuras.html">Cervezas oscuras</a>
+                </div>
+            </li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+        
+        <!-- Botón hamburguesa dentro del body, alineado a la derecha -->
+        <button class="hamburger" onclick="toggleSidebar()">☰</button>
+        
+        <!-- Menú lateral -->
+        <div class="sidebar" id="sidebar">
+            <ul>
+                <li class="inicio"><a href="index.html">Inicio</a></li>
+                <li class="productos dropdown">
+                    <a href="javascript:void(0)" onclick="toggleDropdown('sidebar-dropdown', this)" aria-expanded="false">
+                        Cervezas 
+                        <span class="arrow">&#9660;</span>
+                    </a>
+                    <ul class="submenu" id="sidebar-dropdown">
+                        <li><a href="cervezas-claras.html">Cervezas claras</a></li>
+                        <li><a href="cervezas-oscuras.html">Cervezas oscuras</a></li>
+                    </ul>
+                </li>
+                <li class="nosotros"><a href="nosotros.html">Nosotros</a></li>
+                <li class="contacto"><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+        
+        <!-- Overlay para el menú hamburguesa -->
+        <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+    </header>
+
+<!-- Banner-contacto-->
+<div class="banner-nosotros">
+    <div class="banner-nosotros-images">
+        <img class="banner-nosotros-image active" src="images/banner-nosotros.jpg" alt="Cerveza Clara 1">
+    </div>
+</div>
+
+<div class="contenedor-nosotros">
+    <!-- Imagen -->
+    <div class="imagen-nosotros">
+        <img src="images/logo-2.png" alt="Imagen de contacto" width="309" height="323">
+    </div>
+    
+    <!-- Texto -->
+    <div class="texto-nosotros">
+        <p>
+            Nuestra pasión por la cerveza es lo que nos impulsa. Desde nuestra fundación, nos hemos dedicado a ofrecer una experiencia cervecera incomparable, donde cada sorbo cuenta una historia de tradición y creatividad.
+        </p>
+        <br>
+
+        <p>
+            Con una cuidadosa selección de cervezas artesanales, desde los clásicos hasta los más audaces, nuestro objetivo es brindarte momentos de verdadero placer cervecero.
+        </p>
+        <br>
+        <p>
+            En Happy Beer, nos esforzamos por ser más que un lugar para disfrutar de una buena cerveza; somos un espacio donde la camaradería y la celebración se encuentran en cada encuentro. Únete a nosotros y descubre el mundo de la cerveza con nosotros. ¡Salud!
+        </p>
+    </div>
+</div>
+
+</div>
+
+
+    
+</body>
+
+</html>
